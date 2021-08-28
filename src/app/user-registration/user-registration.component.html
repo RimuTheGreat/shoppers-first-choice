@@ -1,0 +1,48 @@
+<div class="text-center">
+    <legend>
+        <a href="#" (click)="redirectToLogin()">Shoppers First Choice</a>
+    </legend>
+    <form name="register" (ngSubmit)="!register.invalid" #register="ngForm" novalidate>
+        <mat-form-field>
+            <input matInput name="firstName" class="form-control" placeholder="Enter your first name" [(ngModel)]="model.firstName" #firstName="ngModel" required>
+        </mat-form-field>
+        <div *ngIf="register.submitted && firstName.invalid">
+            <mat-error *ngIf="firstName.errors.required">Please enter first name</mat-error>
+        </div>
+        <mat-form-field>
+            <input matInput name="lastName" class="form-control" placeholder="Enter your last name" [(ngModel)]="model.lastName" #lastName="ngModel">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput name="username" class="form-control" placeholder="Enter your user name" [(ngModel)]="model.username" #username="ngModel" required>
+        </mat-form-field>
+        <div *ngIf="register.submitted && username.invalid">
+            <mat-error *ngIf="username.errors.required">Please enter valid user name</mat-error>
+        </div>
+        <mat-form-field>
+            <input matInput name="email" class="form-control" placeholder="Enter your email" [(ngModel)]="model.email" #email="ngModel" required>
+        </mat-form-field><br><br>
+        <div *ngIf="register.submitted && email.invalid">
+            <mat-error *ngIf="email.errors.required">Please enter valid email id</mat-error>
+        </div>
+        <mat-form-field>
+            <input matInput name="phone" class="form-control" placeholder="Enter your contact number" [(ngModel)]="model.phone" #phone="ngModel" required>
+        </mat-form-field><br><br>
+        <div *ngIf="register.submitted && phone.invalid">
+            <mat-error *ngIf="phone.errors.required">Please enter valid contact number</mat-error>
+        </div>
+        <mat-form-field>
+            <input matInput name="password" class="form-control" placeholder="Enter your password" [(ngModel)]="model.password" #password="ngModel" required>
+        </mat-form-field><br><br>
+        <div *ngIf="register.submitted && password.invalid">
+            <mat-error *ngIf="password.errors.required">Please enter a valid password</mat-error>
+        </div>
+        <mat-form-field>
+            <input matInput name="confirmpassword" class="form-control" placeholder="Confirm your password" [(ngModel)]="model.confirmpassword" #confirmpassword="ngModel" required>
+        </mat-form-field><br><br>
+        <div *ngIf="register.submitted && confirmpassword.invalid">
+            <mat-error *ngIf="confirmpassword.errors.required">Please enter a valid password</mat-error>
+        </div>
+        <button type="submit" mat-raised-button color="warn">Register yourself</button>
+        <a routerLink="/login"><button type="submit" mat-raised-button color="warn">Login</button></a>
+    </form>
+</div>

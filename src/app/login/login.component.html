@@ -1,0 +1,22 @@
+<div class="text-center">
+    <legend>
+        <h2>Shoppers First Choice</h2>
+    </legend>
+    <form #login="ngForm" name="form" (ngSubmit)="login.form.valid && onSubmit()" novalidate>
+        <mat-form-field>
+            <input matInput name="username" class="form-control" placeholder="Enter your username" [(ngModel)]="model.username" #username="ngModel" required>
+        </mat-form-field><br><br>
+        <div *ngIf="login.submitted && username.invalid">
+            <mat-error *ngIf="username.errors.required">Please enter valid email id</mat-error>
+        </div>
+        <mat-form-field>
+            <input matInput name="password" class="form-control" placeholder="Enter your password" [(ngModel)]="model.password" #password="ngModel" required>
+        </mat-form-field><br><br>
+        <div *ngIf="login.submitted && password.invalid">
+            <mat-error *ngIf="password.errors.required">Please enter a valid password</mat-error>
+        </div>
+        <button type="submit" mat-raised-button color="warn">Login</button>
+    </form>
+
+    <a routerLink="/register"><button type="submit" mat-raised-button color="success">Register yourself first</button></a>
+</div>
