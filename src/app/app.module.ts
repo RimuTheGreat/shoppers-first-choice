@@ -1,34 +1,26 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-
-// import { SharedModule } from './shared/shared.module';
-// import { Route, RouterModule } from '@angular/router';
-import { MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule } from '@angular/material';
+import { RouterModule } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { appRoutingModule } from './app-routing.module';
-import { CryptoDirective } from './custom/crypto.directive';
+import { SharedModule } from './shared/shared.module';
+import { HttpClient } from '@angular/common/http';
 
-const modules = [
-  MatButtonModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatRippleModule
-];
+
 
 @NgModule({
   imports: [
-    BrowserModule, FormsModule, CommonModule, ...modules, appRoutingModule
+    BrowserModule, ReactiveFormsModule, FormsModule, RouterModule, appRoutingModule, SharedModule
   ],
-  exports: [BrowserAnimationsModule, ...modules],
+  exports: [BrowserAnimationsModule, RouterModule],
   providers: [],
-  declarations: [AppComponent, LoginComponent, UserRegistrationComponent, CryptoDirective],
+  declarations: [AppComponent, LoginComponent, UserRegistrationComponent],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

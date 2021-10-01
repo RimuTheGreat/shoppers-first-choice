@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { UtilityService } from '../core/utility.service';
-import { CryptoDirective } from '../custom/crypto.directive';
 import { Authentication as authenticate } from '../_models/authenticate';
 
 @Injectable({
@@ -21,7 +20,6 @@ export class CommonService {
   decryptedAuthToken
 
   constructor(
-    private readonly cryptoDirective: CryptoDirective,
     private readonly httpClient: HttpClient,
     public readonly utilityService: UtilityService
   ) {
@@ -51,11 +49,6 @@ export class CommonService {
     let optionHeader = new HttpHeaders();
     optionHeader = optionHeader.append(this.contentType, this.applicationJson);
     if(sessionStorage.getItem(authenticate.status) === authenticate.loggedIn){
-      if(environment.authFlag){
-        this.authToken = sessionStorage.getItem(authenticate.auth);
-        this.decryptedAuthToken = this.cryptoDirective.decrypt(this.authToken, authenticate.accessToken).toString(CryptoJS.enc.Utf8);
-
-      }
 
     }
   }
