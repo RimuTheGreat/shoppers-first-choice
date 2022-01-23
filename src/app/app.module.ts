@@ -10,16 +10,16 @@ import { LoginComponent } from './login/login.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { appRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
-import { HttpClient } from '@angular/common/http';
-
+import { HttpClientModule } from '@angular/common/http';
+import { CommonService } from './core/common.service';
 
 
 @NgModule({
   imports: [
-    BrowserModule, ReactiveFormsModule, FormsModule, RouterModule, appRoutingModule, SharedModule
+    BrowserModule, ReactiveFormsModule, FormsModule, RouterModule, appRoutingModule, SharedModule, HttpClientModule
   ],
   exports: [BrowserAnimationsModule, RouterModule],
-  providers: [],
+  providers: [CommonService],
   declarations: [AppComponent, LoginComponent, UserRegistrationComponent],
   bootstrap: [AppComponent],
   schemas: [

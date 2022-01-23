@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,14 +6,15 @@ import { Component, OnInit} from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-public notification:any;
+  isOpened: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
-    
-  }
-  deleteFromDOM(notification: any){
-      console.log(notification);
   }
 
+  toggleSidebar() {
+    console.log('toggleSidebar clicked');
+    this.isOpened = !this.isOpened;
+    console.log(this.isOpened);
+  }
 }

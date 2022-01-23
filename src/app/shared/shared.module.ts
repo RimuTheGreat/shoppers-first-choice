@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule, MatButtonModule, MatDialogModule, MatRippleModule } from '@angular/material';
+import { MatInputModule, MatButtonModule, MatDialogModule, MatRippleModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -20,7 +20,9 @@ const modules = [
   MatCardModule,
   MatTabsModule,
   MatIconModule,
-  MatDialogModule
+  MatDialogModule,
+  MatSidenavModule,
+  MatToolbarModule
 ];
 
 @NgModule({
@@ -30,6 +32,6 @@ const modules = [
     CommonModule,
     ...modules
   ],
-  exports: [...modules, DashboardComponent]
+  exports: [...modules, DashboardComponent, HeaderComponent, FooterComponent,]
 })
 export class SharedModule { }
