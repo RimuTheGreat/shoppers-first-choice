@@ -2,18 +2,18 @@
     <legend>
         <h2>Shoppers First Choice</h2>
     </legend>
-    <form #login="ngForm" name="form" (ngSubmit)="login.form.valid && onSubmit()" novalidate>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <mat-form-field>
-            <input matInput name="username" class="form-control" placeholder="Enter your username" [(ngModel)]="model.username" #username="ngModel" required>
+            <input matInput type="text" name="username" class="form-control" placeholder="Enter your username" formControlName="username">
         </mat-form-field><br><br>
-        <div *ngIf="login.submitted && username.invalid">
-            <mat-error *ngIf="username.errors.required">Please enter valid email id</mat-error>
+        <div *ngIf="f.username.errors">
+            <mat-error *ngIf="f.username.errors.required">Please enter valid email id</mat-error>
         </div>
         <mat-form-field>
-            <input matInput name="password" class="form-control" placeholder="Enter your password" [(ngModel)]="model.password" #password="ngModel" required>
+            <input matInput type="text" name="password" class="form-control" placeholder="Enter your password" formControlName="password">
         </mat-form-field><br><br>
-        <div *ngIf="login.submitted && password.invalid">
-            <mat-error *ngIf="password.errors.required">Please enter a valid password</mat-error>
+        <div *ngIf="f.password.errors">
+            <mat-error *ngIf="f.password.errors.required">Please enter a valid password</mat-error>
         </div>
         <button type="submit" mat-raised-button color="warn">Login</button>
     </form>
