@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { User } from './_models/usermodel';
 import { filter } from 'rxjs/operators';
+import { AuthenticateService } from './core/services/authenticate.service';
 
 
 @Component({
@@ -15,10 +16,11 @@ export class AppComponent implements OnInit {
   model = new User();
 
   ngOnInit() { }
-
+  currentUser: User;
   currentRoute: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+    private authenticateService: AuthenticateService) {
 
     /** checks for the current activated route */
     router.events.pipe(
@@ -26,5 +28,7 @@ export class AppComponent implements OnInit {
     ).subscribe(event => {
       this.currentRoute = event['url'];
     })
+
+    this.authenticateService.currentUser.subscribe(x => this.currentUser = x);
   }
 }

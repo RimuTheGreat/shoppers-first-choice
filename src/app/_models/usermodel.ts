@@ -1,6 +1,6 @@
 
 export class User{
-    uniqueId: number;
+    id: number;
     firstName: string;
     lastName: string;
     username: String;
@@ -8,4 +8,5 @@ export class User{
     phone: number;
     password: string;
     confirmpassword: string;
+    token?: string;
 };
